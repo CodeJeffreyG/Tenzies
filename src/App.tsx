@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import Die from "./Components/Die";
+
 
 function App() {
+  
+
+  
+  const randomTenNumbers = () => {
+    let result = [];
+    for (let i = 0; i < 10; i++) {
+      result.push(Math.ceil(Math.random() * 6));
+    }
+    return result; //creating an array of 10 random numbers
+  };
+
+  const [allDie, allDieState] = useState(randomTenNumbers())
+
+
+    let die = allDie.map(dice => 
+    <Die
+    value = {dice} //map over all 10 numbers and giving each value as a prop
+    />)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <div className="diceContainer">
+        {die} 
+      </div>
+    </main>
   );
 }
 
