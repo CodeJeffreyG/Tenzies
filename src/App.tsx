@@ -1,11 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Die from "./Components/Die";
-
+import Button from "./Components/Button";
 
 function App() {
-  
-
-  
   const randomTenNumbers = () => {
     let result = [];
     for (let i = 0; i < 10; i++) {
@@ -14,20 +11,18 @@ function App() {
     return result; //creating an array of 10 random numbers
   };
 
-  const [allDie, allDieState] = useState(randomTenNumbers())
+  const [allDie, allDieState] = useState(randomTenNumbers());
 
+  const reroll = () => {
+    allDieState((prevState) => (prevState = randomTenNumbers()));
+  };
 
-    let die = allDie.map(dice => 
-    <Die
-    value = {dice} //map over all 10 numbers and giving each value as a prop
-    />)
-
+  let diceElements = allDie.map((dice) => <Die value={dice} />);
 
   return (
     <main>
-      <div className="diceContainer">
-        {die} 
-      </div>
+      <div className="diceContainer">{diceElements}</div>
+      <Button reroll={reroll} />
     </main>
   );
 }
