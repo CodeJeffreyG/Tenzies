@@ -20,7 +20,7 @@ code {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   width: 5000px;
   align-items: center;
   background-color: #f5f5f5;
@@ -61,6 +61,7 @@ main {
   color: white;
   font-size: 1.2rem;
   font-family: "Karla", sans-serif;
+  cursor: pointer;
 }
 
 .rerollButton:focus {
