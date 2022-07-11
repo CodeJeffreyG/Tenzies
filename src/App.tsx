@@ -40,10 +40,6 @@ function App() {
   }, [allDie]);
 
   //increment counter
-  useEffect(() => {
-    setCounter((prevCounter) => prevCounter + 1);
-  }, [allDie]);
-
   const reroll = () => {
     allDieState((prevState) =>
       //map over die to check if "isHeld" property is true
@@ -54,6 +50,7 @@ function App() {
           : { ...die, value: Math.ceil(Math.random() * 6) }
       )
     );
+    setCounter((prevCounter) => prevCounter + 1);
   };
 
   const holdDice = (id: any) => {
