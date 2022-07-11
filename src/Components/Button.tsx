@@ -10,7 +10,10 @@ export default function button(props: any) {
   }
 
   return (
-    <button className="rerollButton" onClick={props.win ? props.restart : props.reroll}>
+    <button
+      className="rerollButton"
+      onClick={props.win ? props.restart : props.reroll}
+    >
       {buttonText}
     </button>
   );
