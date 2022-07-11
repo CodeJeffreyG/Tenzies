@@ -86,8 +86,9 @@ function App() {
     <main>
       <h1 className="title">{tenzies ? "You Won!" : "Tenzies"}</h1>
       <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
+        {tenzies === true
+          ? `Final Score: ${counter}`
+          : "Roll until all dice are the same. Click each die to freeze it at itscurrent value between rolls."}
       </p>
       <div className="diceContainer">{diceElements}</div>
       <Button
