@@ -19,10 +19,10 @@ function App() {
 
   const reroll = () => {
     allDieState((prevState) =>
-    //map over die to check if "isHeld" property is true
-    //if so keep die the same
+      //map over die to check if "isHeld" property is true
+      //if so keep die the same
       prevState.map((die) =>
-        die.isHeld === true
+        die.isHeld
           ? { ...die }
           : { ...die, value: Math.ceil(Math.random() * 6) }
       )
