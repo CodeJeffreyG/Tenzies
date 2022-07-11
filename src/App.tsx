@@ -16,14 +16,35 @@ function App() {
   };
 
   const [allDie, allDieState] = useState(randomTenNumbers());
-  
 
   const reroll = () => {
-    allDieState((prevState) => (prevState = randomTenNumbers()));
+    allDieState((prevState) =>
+    //map over die to check if "isHeld" property is true
+    //if so keep die the same
+      prevState.map((die) =>
+        die.isHeld === true
+          ? { ...die }
+          : { ...die, value: Math.ceil(Math.random() * 6) }
+      )
+    );
+  };
+
+  const holdDice = (id: any) => {
+    allDieState((prevState) =>
+      //map over die check if event id === die.id if so flip the "isHeld" property
+      prevState.map((die) =>
+        die.id === id ? { ...die, isHeld: !die.isHeld } : die
+      )
+    );
   };
 
   let diceElements = allDie.map((dice) => (
-    <Die value={dice.value} id={dice.id} isHeld={dice.isHeld} />
+    <Die
+      value={dice.value}
+      id={dice.id}
+      isHeld={dice.isHeld}
+      holdDice={() => holdDice(dice.id)}
+    />
   ));
 
   return (
