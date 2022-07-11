@@ -66,8 +66,8 @@ main {
 }
 
 .rerollButton {
-  height: 50px;
-  width: 100px;
+  height: 5%;
+  width: 22%;
   border: none;
   border-radius: 6px;
   background-color: #5035ff;

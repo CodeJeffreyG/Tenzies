@@ -62,6 +62,17 @@ function App() {
     );
   };
 
+  //restart game
+  const initialize = () => {
+    allDieState((prevState) => (prevState = randomTenNumbers()));
+    //delete all held dice
+    allDie.map((Die) => (Die.isHeld ? { ...Die, isHeld: !Die.isHeld } : Die));
+    //set wincon to false
+    setTenzies((prevState) => !prevState);
+    //set counter to 0
+    setCounter((prevCounter) => (prevCounter = 0));
+  };
+
   let diceElements = allDie.map((dice) => (
     <Die
       value={dice.value}
@@ -79,7 +90,12 @@ function App() {
         current value between rolls.
       </p>
       <div className="diceContainer">{diceElements}</div>
-      <Button reroll={reroll} win={tenzies} increment={counter} />
+      <Button
+        reroll={reroll}
+        win={tenzies}
+        increment={counter}
+        restart={initialize}
+      />
     </main>
   );
 }
